@@ -36,9 +36,9 @@ export default {
     });
 
     // 监听滚动的事件
-    this.scroll.on("scroll", (position) => {
-      this.$emit("scroll", position);
-    });
+    // this.scroll.on("scroll", (position) => {
+    //   this.$emit("scroll", position);
+    // });
     // 2.监听滚动的位置
     if (this.probeType === 2 || this.probeType === 3) {
       this.scroll.on("scroll", (position) => {
@@ -62,6 +62,7 @@ export default {
       this.scroll && this.scroll.finishPullUp();
     },
     refresh() {
+      // console.log("111");
       this.scroll && this.scroll.refresh();
     },
     getScrollY() {

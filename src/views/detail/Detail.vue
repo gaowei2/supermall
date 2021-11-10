@@ -32,7 +32,7 @@ import GoodsList from "components/content/goods/GoodsList";
 // import Toast from "components/common/toast/Toast";
 
 import { debounce } from "common/utils";
-import { backTopMixin } from "common/mixin";
+import { itemListenerMixin, backTopMixin } from "common/mixin";
 import {
   getDetail,
   Goods,
@@ -59,7 +59,7 @@ export default {
     // Toast,
   },
   // 注意：[]不能省略
-  mixins: [backTopMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   data() {
     return {
       iid: null,
@@ -87,6 +87,7 @@ export default {
       // console.log(res.result);
       // 1、获取顶部的图片轮播数据
       this.topImages = res.result.itemInfo.topImages;
+      // console.log(res.result.itemInfo.topImages);
       // 2、获取商品信息
       this.goods = new Goods(
         data.itemInfo,
@@ -122,13 +123,20 @@ export default {
       this.themeTopYs.push(Number.MAX_VALUE);
     }, 100);
   },
-  mounted() {},
+  mounted() {
+    // const refresh = debounce(this.$refs.scroll.refresh, 200);
+    // this.$bus.$on("itemImageLoad", () => {
+    //   refresh();
+    // });
+    this.newRefresh();
+  },
   updated() {},
   methods: {
     ...mapActions(["addCart"]),
     imageLoad() {
-      this.$refs.scroll.refresh();
-
+      // console.log("111");
+      this.newRefresh();
+      // this.$refs.scroll.refresh();
       this.getThemeTopY();
     },
     titleClick(index) {

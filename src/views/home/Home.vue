@@ -44,7 +44,7 @@ import Scroll from "components/common/scroll/Scroll";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 import { debounce } from "common/utils";
-import { backTopMixin } from "common/mixin";
+import { itemListenerMixin, backTopMixin } from "common/mixin";
 
 export default {
   name: "Home",
@@ -60,7 +60,7 @@ export default {
     // BackTop,           //BackTop用了混入封装（mixin）不用写重复的代码
   },
   // 注意：[]不能省略
-  mixins: [backTopMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   data() {
     return {
       banners: [],
@@ -108,10 +108,11 @@ export default {
   },
   mounted() {
     //1、 图片加载完成的时间监听
-    const refresh = debounce(this.$refs.scroll.refresh);
-    this.$bus.$on("itemImageLoad", () => {
-      refresh();
-    });
+    this.newRefresh();
+    // const refresh = debounce(this.$refs.scroll.refresh, 200);
+    // this.$bus.$on("itemImageLoad", () => {
+    //   refresh();
+    // });
   },
   methods: {
     // 事件监听相关的方法
@@ -152,7 +153,7 @@ export default {
     // 网络请求相关的方法
     getHomeMultidata() {
       getHomeMultidata().then((res) => {
-        // console.log(res);
+        // console.log(res.data.banner.list);
         this.banners = res.data.banner.list;
         this.recommends = res.data.recommend.list;
       });

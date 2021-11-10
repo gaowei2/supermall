@@ -5,7 +5,7 @@
     </keep-alive>
     <main-tab-bar />
   </div>
-</template>
+</template>  
   
 <script>
 import MainTabBar from "components/content/MainTabBar/MainTabBar.vue";
@@ -18,5 +18,5 @@ export default {
 </script>
 
 <style>
-@import "assets/css/base.css";
+@import "./assets/css/base.css";
 </style>
