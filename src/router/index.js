@@ -35,6 +35,7 @@ const routes = [
   },
   {
     path: '/detail/:iid',
+    name: 'detail',
     component: Detail
   },
 

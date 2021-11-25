@@ -31,7 +31,11 @@ export default {
       // console.log("1");
     },
     itemClick() {
-      this.$router.push("/detail/" + this.goodsItem.iid);
+      // this.$router.push("/detail/" + this.goodsItem.iid);
+      this.$router.push({
+        name: "detail",
+        query: { iid: this.goodsItem.iid },
+      });
     },
   },
 };
