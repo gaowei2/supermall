@@ -11,6 +11,7 @@
   </div>
 </template>
 
+
 <script>
 import NavBar from "components/common/navbar/NavBar";
 import CartList from "./childComps/CartList.vue";
