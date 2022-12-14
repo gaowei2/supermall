@@ -2,6 +2,7 @@
   <div class="wrapper" ref="aaaa">
     <ul class="content">
       <li>分类列表1</li>
+      <li>分类列表1</li>
       <li>分类列表2</li>
       <li>分类列表3</li>
       <li>分类列表4</li>
